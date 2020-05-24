@@ -35,9 +35,8 @@ class StoryBrain {
         choice2: '')
   ];
 
-  //TODO: Step 23 - Use the storyNumber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
-
-//TODO: Step 8 - Create a method called getStory() that returns the first storyTitle from _storyData.
+  
+//Create a method called getStory() that returns the first storyTitle from _storyData.
   String getStory() {
     return _storyData[_storyNumber].storyTitle;
   }
@@ -50,4 +49,40 @@ class StoryBrain {
   String getChoice2() {
     return _storyData[_storyNumber].choice2;
   }
+  void nextStory(int choiceNumber) {
+    // Using the story plan, update nextStory to change the storyNumber depending on the choice made by the user.
+    //When user is on story0 and they chose choice1, the story should progress to story2.
+    if (choiceNumber == 1 && _storyNumber == 0) {
+      _storyNumber = 2;
+    } else if (choiceNumber == 2 && _storyNumber == 0) {
+      _storyNumber = 1;
+    } else if (choiceNumber == 1 && _storyNumber == 1) {
+      _storyNumber = 2;
+    } else if (choiceNumber == 2 && _storyNumber == 1) {
+      _storyNumber = 3;
+    } else if (choiceNumber == 1 && _storyNumber == 2) {
+      _storyNumber = 5;
+    } else if (choiceNumber == 2 && _storyNumber == 2) {
+      _storyNumber = 4;
+    }
+    //if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it.
+    //should call a method called restart() that resets the storyNumber to 0.
+    else if (_storyNumber == 3 || _storyNumber == 4 || _storyNumber == 5) {
+      restart();
+    }
+  }
+  void restart(){
+    _storyNumber=0;
+  }
+//Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
+  bool buttonShouldBeVisible() {
+    //You could also just check if (_storyNumber < 3)
+    if (_storyNumber == 0 || _storyNumber == 1 || _storyNumber == 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+
 }
