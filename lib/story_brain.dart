@@ -74,7 +74,8 @@ class StoryBrain {
   void restart(){
     _storyNumber=0;
   }
-//Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
+//Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2
+// (when both buttons should show choices) and return true if that is the case, else it should return false.
   bool buttonShouldBeVisible() {
     //You could also just check if (_storyNumber < 3)
     if (_storyNumber == 0 || _storyNumber == 1 || _storyNumber == 2) {
